@@ -1,0 +1,51 @@
+# Installed in the public generated-site repository as .github/workflows/drive-pages.yml.
+name: Sincronizar Drive y publicar CLEMIVERSE
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: clemiverse-pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Leer la carpeta pública y sus subcarpetas
+        id: sync
+        run: |
+          node .github/scripts/sync-drive.mjs data/drive-videos.json
+          if git diff --quiet -- data/drive-videos.json; then
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add data/drive-videos.json
+            git commit -m 'Actualizar catálogo de Google Drive'
+            git push
+          fi
+      - uses: actions/configure-pages@v5
+        if: steps.sync.outputs.changed == 'true' || github.event_name != 'schedule'
+      - uses: actions/upload-pages-artifact@v4
+        if: steps.sync.outputs.changed == 'true' || github.event_name != 'schedule'
+        with:
+          path: '.'
+      - name: Publicar el catálogo y la página
+        id: deployment
+        if: steps.sync.outputs.changed == 'true' || github.event_name != 'schedule'
+        uses: actions/deploy-pages@v4
