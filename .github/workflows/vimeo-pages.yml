@@ -1,5 +1,5 @@
-# Installed in the public generated-site repository as .github/workflows/drive-pages.yml.
-name: Sincronizar Drive y publicar CLEMIVERSE
+# Install as .github/workflows/vimeo-pages.yml in the generated-site repository.
+name: Sincronizar Vimeo y publicar CLEMIVERSE
 on:
   push:
     branches: [main]
@@ -25,18 +25,18 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-      - name: Leer la carpeta pública y sus subcarpetas
+      - name: Actualizar títulos y miniaturas de Vimeo
         id: sync
         run: |
-          node .github/scripts/sync-drive.mjs data/drive-videos.json
-          if git diff --quiet -- data/drive-videos.json; then
+          node .github/scripts/sync-vimeo.mjs data/vimeo-videos.json .github/config/vimeo-library.json
+          if git diff --quiet -- data/vimeo-videos.json; then
             echo 'changed=false' >> "$GITHUB_OUTPUT"
           else
             echo 'changed=true' >> "$GITHUB_OUTPUT"
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git add data/drive-videos.json
-            git commit -m 'Actualizar catálogo de Google Drive'
+            git add data/vimeo-videos.json
+            git commit -m 'Actualizar catálogo y miniaturas de Vimeo'
             git push
           fi
       - uses: actions/configure-pages@v5
@@ -45,7 +45,7 @@ jobs:
         if: steps.sync.outputs.changed == 'true' || github.event_name != 'schedule'
         with:
           path: '.'
-      - name: Publicar el catálogo y la página
+      - name: Publicar CLEMIVERSE
         id: deployment
         if: steps.sync.outputs.changed == 'true' || github.event_name != 'schedule'
         uses: actions/deploy-pages@v4

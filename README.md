@@ -2,8 +2,10 @@
 
 https://yeferclemijpg.github.io/clemiverse-web/
 
-Sitio publicado de CLEMI. El flujo de GitHub Actions sincroniza la biblioteca publica de Google Drive aproximadamente cada 15 minutos y publica los cambios en Pages.
+Videoteca de CLEMI con reproductor y miniaturas de Vimeo.
 
-Los videos se organizan en carpetas con el nombre del medico. Conserva el acceso publico de lectura. El reproductor pertenece a Google Drive; su procesamiento y disponibilidad dependen de Google.
+El flujo de GitHub Actions actualiza los titulos y miniaturas de los videos registrados aproximadamente cada 15 minutos. Los nuevos videos requieren registrar su ID y doctor en .github/config/vimeo-library.json. La deteccion automatica de nuevas cargas y su transferencia desde Drive quedan pendientes de completar la autorizacion de la API de Vimeo.
 
-Este repositorio contiene el sitio exportado y su sincronizador. Conserva la carpeta .github al actualizar el diseno. Pages utiliza GitHub Actions como fuente de publicacion.
+Para cambiar una portada, selecciona la miniatura del video en Vimeo. No hace falta reexportar el video.
+
+Conserva .github al publicar una actualizacion del diseno. Pages usa GitHub Actions.
