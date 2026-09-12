@@ -1,18 +1,70 @@
 {
   "userId": "263292922",
   "videos": [
-    { "id": "1226061378", "doctor": "Dr. Mauricio Meneses" },
-    { "id": "1226061353", "doctor": "Dr. Marco Altamirano" },
-    { "id": "1226061367", "doctor": "Dr. Mauricio Mora Merchán" },
-    { "id": "1226061366", "doctor": "Dra. Linda Bibiana Vallejo Vargas" },
-    { "id": "1226061359", "doctor": "Dr. Cristhian Alberto Rojas" },
-    { "id": "1226061358", "doctor": "Dr. Cristhian Alberto Rojas" },
-    { "id": "1226061354", "doctor": "Dr. Marco Altamirano" },
-    { "id": "1226061382", "doctor": "Dr. Oscar Morales" },
-    { "id": "1226061385", "doctor": "Dr. Oscar Morales" },
-    { "id": "1226061371", "doctor": "Dra. Linda Bibiana Vallejo Vargas" },
-    { "id": "1226061374", "doctor": "Dr. Mauricio Meneses" },
-    { "id": "1226101820", "doctor": "Dr. Velarde" },
-    { "id": "1226101819", "doctor": "Dr. Velarde" }
+    {
+      "id": "1226101820",
+      "title": "Manejo de fracturas del anillo pélvico hemo dinámicamente inestables",
+      "doctor": "Dr. Jorge Velarde"
+    },
+    {
+      "id": "1226061378",
+      "title": "Presentación basada en caso: lesiones por compresión lateral (LC1,2,3)",
+      "doctor": "Dr. Mauricio Meneses"
+    },
+    {
+      "id": "1226061353",
+      "title": "Presentación basada en caso: lesiones por compresión anteroposterior (APC 1,2,3)",
+      "doctor": "Dr. Marco Altamirano"
+    },
+    {
+      "id": "1226061367",
+      "title": "Presentación basada en caso: lesiones por cizallamiento vertical",
+      "doctor": "Dr. Mauricio Mora"
+    },
+    {
+      "id": "1226061366",
+      "title": "Cómo obtener adecuadas imágenes fluoroscópicas",
+      "doctor": "Dra. Linda Vallejo"
+    },
+    {
+      "id": "1226061359",
+      "title": "Técnica para la colocación de los tornillos para SI, TSTI, supra acetabular y ramas superiores",
+      "doctor": "Dr. Cristian Rojas"
+    },
+    {
+      "id": "1226061358",
+      "title": "Colocación de placa como banda de tensión en el anillo posterior y abordaje posterior directo para la SI",
+      "doctor": "Dr. Cristian Rojas"
+    },
+    {
+      "id": "1226101819",
+      "title": "Fijación sacroilíaca por via anterior",
+      "doctor": "Dr. Jorge Velarde"
+    },
+    {
+      "id": "1226061354",
+      "title": "Fijación lumbo pélvica: indicaciones y técnica quirúrgica",
+      "doctor": "Dr. Marco Altamirano"
+    },
+    {
+      "id": "1226061382",
+      "title": "Presentación basada en caso: fracturas elementales",
+      "doctor": "Dr. Oscar Morales"
+    },
+    {
+      "id": "1226061385",
+      "title": "Presentación basada en caso: abordaje de Koocher Langebeck, AIP, pararecto, stoppa",
+      "doctor": "Dr. Oscar Morales"
+    },
+    {
+      "id": "1226061371",
+      "title": "Técnicas de fijación externa en fracturas de la pelvis",
+      "doctor": "Dra. Linda Vallejo"
+    },
+    {
+      "id": "1226061374",
+      "title": "Placa en W: indicaciones, tips and tricks",
+      "doctor": "Dr. Mauricio Meneses"
+    }
   ]
 }

@@ -7,6 +7,7 @@ export function readLibrary(value) {
   const seen = new Set();
   for (const video of value.videos) {
     if (!/^\d{5,15}$/.test(video.id) || seen.has(video.id) || typeof video.doctor !== 'string' || !video.doctor.trim() || video.doctor.length > 500) throw new Error('Registro de Vimeo inválido.');
+    if (video.title !== undefined && (typeof video.title !== 'string' || !video.title.trim() || video.title.length > 1000)) throw new Error('Título del registro inválido.');
     if (video.hash && !/^[a-zA-Z0-9]+$/.test(video.hash)) throw new Error('Hash de Vimeo inválido.');
     seen.add(video.id);
   }
@@ -22,7 +23,7 @@ export function catalogVideo(metadata, entry, userId) {
   if (thumbnail.protocol !== 'https:' || thumbnail.hostname !== 'i.vimeocdn.com' || thumbnail.username || thumbnail.password || thumbnail.port) throw new Error('Miniatura de Vimeo inválida.');
   return {
     id: entry.id,
-    title: metadata.title.replace(/\.(mp4|mov|m4v|webm|mkv|avi|wmv|mpg|mpeg|mts|ogg|flv|3gp)$/i, '').trim(),
+    title: entry.title ?? metadata.title.replace(/\.(mp4|mov|m4v|webm|mkv|avi|wmv|mpg|mpeg|mts|ogg|flv|3gp)$/i, '').trim(),
     doctor: entry.doctor,
     thumbnail: thumbnail.href,
     playerUrl: `https://player.vimeo.com/video/${entry.id}${entry.hash ? `?h=${entry.hash}` : ''}`,
@@ -50,7 +51,7 @@ export async function synchronize(output, library, get = getMetadata, today = ne
   const videos = [];
   // A failed lookup never replaces the published library with partial data.
   for (const entry of library.videos) videos.push(catalogVideo(await get(entry), entry, library.userId));
-  videos.sort((a, b) => a.doctor.localeCompare(b.doctor, 'es') || a.title.localeCompare(b.title, 'es') || a.id.localeCompare(b.id));
+  // The registry preserves the academic program's sequence.
   const contents = JSON.stringify({ schemaVersion: 1, provider: 'vimeo', checkedOn: today, videos }, null, 2) + '\n';
   const previous = await readFile(output, 'utf8').catch(error => { if (error.code !== 'ENOENT') throw error; return ''; });
   if (previous === contents) return { count: videos.length, changed: false };
