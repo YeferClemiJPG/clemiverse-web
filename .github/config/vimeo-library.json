@@ -1,16 +1,16 @@
 {
   "userId": "263292922",
   "videos": [
+    { "id": "1226061378", "doctor": "Dr. Mauricio Meneses" },
+    { "id": "1226061353", "doctor": "Dr. Marco Altamirano" },
+    { "id": "1226061367", "doctor": "Dr. Mauricio Mora Merchán" },
+    { "id": "1226061366", "doctor": "Dra. Linda Bibiana Vallejo Vargas" },
     { "id": "1226061359", "doctor": "Dr. Cristhian Alberto Rojas" },
     { "id": "1226061358", "doctor": "Dr. Cristhian Alberto Rojas" },
-    { "id": "1226061353", "doctor": "Dr. Marco Altamirano" },
     { "id": "1226061354", "doctor": "Dr. Marco Altamirano" },
-    { "id": "1226061378", "doctor": "Dr. Mario Meneses" },
-    { "id": "1226061374", "doctor": "Dr. Mario Meneses" },
-    { "id": "1226061367", "doctor": "Dr. Mauricio Mora Merchán" },
-    { "id": "1226061385", "doctor": "Dr. Oscar Morales" },
     { "id": "1226061382", "doctor": "Dr. Oscar Morales" },
+    { "id": "1226061385", "doctor": "Dr. Oscar Morales" },
     { "id": "1226061371", "doctor": "Dra. Linda Bibiana Vallejo Vargas" },
-    { "id": "1226061366", "doctor": "Dra. Linda Bibiana Vallejo Vargas" }
+    { "id": "1226061374", "doctor": "Dr. Mauricio Meneses" }
   ]
 }
